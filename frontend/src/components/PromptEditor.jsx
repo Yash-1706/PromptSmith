@@ -43,13 +43,13 @@ const PromptEditor = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-purple-400 mb-4">
+          <h1 className="text-4xl font-bold text-accent mb-4">
             Create New Prompt
           </h1>
-          <p className="text-gray-400">
+          <p className="text-muted-foreground">
             Craft your AI prompt and test it with Gemini
           </p>
         </div>

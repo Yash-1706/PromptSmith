@@ -19,7 +19,7 @@ const PromptCard = ({ prompt }) => {
       </CardHeader>
       <CardContent>
         <div className="flex justify-between items-center">
-          <span className="text-sm text-gray-500">
+          <span className="text-sm text-muted-foreground">
             {new Date(prompt.createdAt).toLocaleDateString()}
           </span>
           <Button variant="link" asChild>

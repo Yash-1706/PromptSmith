@@ -97,22 +97,22 @@ const PromptDetails = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-        <div className="text-white text-xl">Loading...</div>
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-foreground text-xl">Loading...</div>
       </div>
     );
   }
 
   if (!prompt) {
     return (
-      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-        <div className="text-white text-xl">Prompt not found</div>
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-foreground text-xl">Prompt not found</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="mb-8">
           <Button
@@ -123,9 +123,7 @@ const PromptDetails = () => {
             ← Back to Dashboard
           </Button>
           <div className="flex justify-between items-start">
-            <h1 className="text-4xl font-bold text-purple-400">
-              {prompt.title}
-            </h1>
+            <h1 className="text-4xl font-bold text-accent">{prompt.title}</h1>
             <div className="flex gap-2">
               <Dialog>
                 <DialogTrigger asChild>
@@ -192,7 +190,7 @@ const PromptDetails = () => {
               <CardTitle>Prompt</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-gray-300 whitespace-pre-wrap">
+              <p className="text-foreground whitespace-pre-wrap">
                 {prompt.promptText}
               </p>
               <Button
@@ -211,13 +209,13 @@ const PromptDetails = () => {
             </CardHeader>
             <CardContent>
               {aiResponse ? (
-                <div className="bg-gray-700 rounded p-4">
-                  <p className="text-gray-300 whitespace-pre-wrap">
+                <div className="bg-card rounded p-4">
+                  <p className="text-foreground whitespace-pre-wrap">
                     {aiResponse}
                   </p>
                 </div>
               ) : (
-                <p className="text-gray-500">
+                <p className="text-muted-foreground">
                   Click "Test with Gemini" to get an AI response
                 </p>
               )}
@@ -232,10 +230,10 @@ const PromptDetails = () => {
               {prompt.aiResponses.map((response, index) => (
                 <Card key={index}>
                   <CardContent className="pt-6">
-                    <p className="text-gray-300 whitespace-pre-wrap">
+                    <p className="text-foreground whitespace-pre-wrap">
                       {response.responseText}
                     </p>
-                    <span className="text-sm text-gray-500">
+                    <span className="text-sm text-muted-foreground">
                       {new Date(response.createdAt).toLocaleString()}
                     </span>
                   </CardContent>

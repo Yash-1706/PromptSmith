@@ -10,14 +10,14 @@ const AIOutput = ({ response, timestamp }) => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-purple-400">AI Response</CardTitle>
+        <CardTitle className="text-accent">AI Response</CardTitle>
         <CardDescription>
           {new Date(timestamp).toLocaleString()}
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="bg-gray-900 rounded p-4">
-          <p className="text-gray-300 whitespace-pre-wrap leading-relaxed">
+        <div className="bg-card rounded p-4">
+          <p className="text-foreground whitespace-pre-wrap leading-relaxed">
             {response}
           </p>
         </div>

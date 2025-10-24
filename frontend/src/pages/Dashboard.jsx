@@ -34,17 +34,17 @@ const Dashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-        <div className="text-white text-xl">Loading...</div>
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-foreground text-xl">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen animated-bg text-white">
+    <div className="min-h-screen animated-bg text-foreground">
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-bold text-purple-400">Dashboard</h1>
+          <h1 className="text-4xl font-bold text-accent">Dashboard</h1>
           <Button asChild>
             <Link to="/prompts/new">Create New Prompt</Link>
           </Button>
@@ -53,7 +53,7 @@ const Dashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {prompts.length === 0 ? (
             <div className="col-span-full text-center py-12">
-              <p className="text-gray-400 text-lg mb-4">
+              <p className="text-muted-foreground text-lg mb-4">
                 No prompts yet. Create your first prompt!
               </p>
               <Button asChild>
@@ -74,7 +74,7 @@ const Dashboard = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-500">
+                    <span className="text-sm text-muted-foreground">
                       {new Date(prompt.createdAt).toLocaleDateString()}
                     </span>
                     <Button variant="link" asChild>

@@ -12,11 +12,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-900 border-b border-gray-800 px-4 py-3">
+    <nav className="bg-card border-b border-border px-4 py-3">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <Link
           to="/"
-          className="text-2xl font-bold gradient-text hover:text-purple-300"
+          className="text-2xl font-bold gradient-text hover:text-accent"
         >
           PromptSmith
         </Link>
@@ -24,7 +24,9 @@ const Navbar = () => {
         <div className="flex items-center space-x-4">
           {user ? (
             <>
-              <span className="text-gray-300">Welcome, {user.username}</span>
+              <span className="text-muted-foreground">
+                Welcome, {user.username}
+              </span>
               <Button asChild variant="ghost">
                 <Link to="/dashboard">Dashboard</Link>
               </Button>

@@ -49,7 +49,7 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-background flex items-center justify-center px-4">
       <Card className="max-w-md w-full">
         <CardHeader>
           <CardTitle className="text-3xl font-bold text-center">
@@ -58,7 +58,7 @@ const Register = () => {
         </CardHeader>
         <CardContent>
           {error && (
-            <div className="bg-red-600 text-white p-3 rounded-md mb-4">
+            <div className="bg-destructive text-destructive-foreground p-3 rounded-md mb-4">
               {error}
             </div>
           )}
@@ -121,9 +121,9 @@ const Register = () => {
             </Button>
           </form>
 
-          <p className="text-center text-gray-400 mt-6">
+          <p className="text-center text-muted-foreground mt-6">
             Already have an account?{" "}
-            <Link to="/login" className="text-purple-400 hover:text-purple-300">
+            <Link to="/login" className="text-accent hover:text-accent/80">
               Login here
             </Link>
           </p>
