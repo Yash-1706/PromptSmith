@@ -95,6 +95,7 @@ Since the backend is deployed on Render's free tier, it goes to sleep after 15 m
 1. **Set up the workflow** (already created in `.github/workflows/keep-alive.yml`)
 
 2. **Add your Render backend URL to GitHub Secrets:**
+
    - Go to your GitHub repository
    - Settings → Secrets and variables → Actions
    - Add new repository secret: `RENDER_BACKEND_URL`
@@ -107,6 +108,7 @@ Since the backend is deployed on Render's free tier, it goes to sleep after 15 m
 1. **Go to [cron-job.org](https://cron-job.org)**
 
 2. **Create a new cron job:**
+
    - Title: `Keep PromptSmith Backend Alive`
    - URL: `https://your-promptsmith-backend.onrender.com/api/auth/me`
    - Execution schedule: Every 3 minutes and 30 seconds
