@@ -98,7 +98,7 @@ const Login = () => {
             Don't have an account?{" "}
             <Link
               to="/register"
-              className="text-accent hover:text-accent/80 font-semibold hover:underline transition-all"
+              className="text-secondary hover:text-secondary/80 font-semibold hover:underline transition-all"
             >
               Register here
             </Link>
