@@ -10,9 +10,9 @@ import {
 
 const PromptCard = ({ prompt }) => {
   return (
-    <Card className="hover:shadow-xl transition-shadow">
+    <Card className="hover-lift border-accent/10">
       <CardHeader>
-        <CardTitle>{prompt.title}</CardTitle>
+        <CardTitle className="text-primary">{prompt.title}</CardTitle>
         <CardDescription className="line-clamp-3">
           {prompt.promptText}
         </CardDescription>
@@ -22,7 +22,11 @@ const PromptCard = ({ prompt }) => {
           <span className="text-sm text-muted-foreground">
             {new Date(prompt.createdAt).toLocaleDateString()}
           </span>
-          <Button variant="link" asChild>
+          <Button
+            variant="link"
+            asChild
+            className="hover:text-accent transition-colors"
+          >
             <Link to={`/prompts/${prompt._id}`}>View Details →</Link>
           </Button>
         </div>
