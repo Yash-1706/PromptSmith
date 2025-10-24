@@ -3,7 +3,13 @@ import { Link } from "react-router-dom";
 import useAuthStore from "../store/useAuthStore";
 import { getPrompts } from "../api/promptAPI";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 const Dashboard = () => {
   const { user, loadUser } = useAuthStore();
@@ -56,7 +62,10 @@ const Dashboard = () => {
             </div>
           ) : (
             prompts.map((prompt) => (
-              <Card key={prompt._id} className="hover:shadow-xl transition-shadow hover-lift">
+              <Card
+                key={prompt._id}
+                className="hover:shadow-xl transition-shadow hover-lift"
+              >
                 <CardHeader>
                   <CardTitle>{prompt.title}</CardTitle>
                   <CardDescription className="line-clamp-3">

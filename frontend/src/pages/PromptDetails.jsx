@@ -6,7 +6,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
@@ -109,7 +115,11 @@ const PromptDetails = () => {
     <div className="min-h-screen bg-gray-900 text-white">
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="mb-8">
-          <Button variant="link" onClick={() => navigate("/dashboard")} className="mb-4">
+          <Button
+            variant="link"
+            onClick={() => navigate("/dashboard")}
+            className="mb-4"
+          >
             ← Back to Dashboard
           </Button>
           <div className="flex justify-between items-start">
@@ -155,7 +165,10 @@ const PromptDetails = () => {
                         id="edit-prompt"
                         value={editData.promptText}
                         onChange={(e) =>
-                          setEditData({ ...editData, promptText: e.target.value })
+                          setEditData({
+                            ...editData,
+                            promptText: e.target.value,
+                          })
                         }
                         rows={8}
                       />
