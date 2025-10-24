@@ -4,7 +4,12 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorMiddleware');
 
-dotenv.config();
+dotenv.config({ path: 'D:\\MERN_PROJECT\\backend\\.env' });
+
+console.log('Environment variables loaded:');
+console.log('MONGO_URI:', process.env.MONGO_URI ? 'defined' : 'undefined');
+console.log('JWT_SECRET:', process.env.JWT_SECRET ? 'defined' : 'undefined');
+console.log('GEMINI_API_KEY:', process.env.GEMINI_API_KEY ? 'defined' : 'undefined');
 
 const app = express();
 
