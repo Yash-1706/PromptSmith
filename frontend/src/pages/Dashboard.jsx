@@ -33,7 +33,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen animated-bg text-white">
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-4xl font-bold text-purple-400">Dashboard</h1>
@@ -58,7 +58,7 @@ const Dashboard = () => {
             </div>
           ) : (
             prompts.map((prompt) => (
-              <div key={prompt._id} className="bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <div key={prompt._id} className="bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow hover-lift border border-gray-700">
                 <h3 className="text-xl font-semibold text-white mb-2">{prompt.title}</h3>
                 <p className="text-gray-400 mb-4 line-clamp-3">{prompt.promptText}</p>
                 <div className="flex justify-between items-center">

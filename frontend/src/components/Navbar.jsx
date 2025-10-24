@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <nav className="bg-gray-900 border-b border-gray-800 px-4 py-3">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold text-purple-400 hover:text-purple-300">
+        <Link to="/" className="text-2xl font-bold gradient-text hover:text-purple-300">
           PromptSmith
         </Link>
         
