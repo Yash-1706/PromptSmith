@@ -86,6 +86,51 @@ An AI-powered prompt engineering platform that allows users to create, test, ref
    - Frontend: http://localhost:5173
    - Backend API: http://localhost:5000
 
+## Keeping Backend Alive (Render Deployment)
+
+Since the backend is deployed on Render's free tier, it goes to sleep after 15 minutes of inactivity. To keep it awake, set up automated pings every 3 minutes and 30 seconds.
+
+### Option 1: GitHub Actions (Recommended)
+
+1. **Set up the workflow** (already created in `.github/workflows/keep-alive.yml`)
+
+2. **Add your Render backend URL to GitHub Secrets:**
+   - Go to your GitHub repository
+   - Settings → Secrets and variables → Actions
+   - Add new repository secret: `RENDER_BACKEND_URL`
+   - Value: `https://your-promptsmith-backend.onrender.com`
+
+3. **The workflow will automatically run every 5 minutes** (GitHub's minimum interval)
+
+### Option 2: Cron-Job.org (For 3m 30s intervals)
+
+1. **Go to [cron-job.org](https://cron-job.org)**
+
+2. **Create a new cron job:**
+   - Title: `Keep PromptSmith Backend Alive`
+   - URL: `https://your-promptsmith-backend.onrender.com/api/auth/me`
+   - Execution schedule: Every 3 minutes and 30 seconds
+   - Request method: `GET`
+
+3. **Test the cron job** to ensure it works
+
+### Option 3: Local Cron Job (Linux/Mac)
+
+If you have access to a Linux/Mac system, you can run the included script:
+
+```bash
+# Make script executable (Linux/Mac)
+chmod +x ping-backend.sh
+
+# Set your backend URL
+export RENDER_BACKEND_URL="https://your-promptsmith-backend.onrender.com"
+
+# Add to crontab (runs every 3 minutes 30 seconds)
+crontab -e
+# Add this line:
+*/3 * * * * /path/to/your/ping-backend.sh
+```
+
 ## API Endpoints
 
 ### Authentication
