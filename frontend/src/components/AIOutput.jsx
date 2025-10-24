@@ -8,7 +8,9 @@ const AIOutput = ({ response, timestamp }) => {
         </span>
       </div>
       <div className="bg-gray-900 rounded p-4">
-        <p className="text-gray-300 whitespace-pre-wrap leading-relaxed">{response}</p>
+        <p className="text-gray-300 whitespace-pre-wrap leading-relaxed">
+          {response}
+        </p>
       </div>
     </div>
   );

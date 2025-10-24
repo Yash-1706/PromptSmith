@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import useAuthStore from '../store/useAuthStore';
-import { getPrompts } from '../api/promptAPI';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import useAuthStore from "../store/useAuthStore";
+import { getPrompts } from "../api/promptAPI";
 
 const Dashboard = () => {
   const { user, loadUser } = useAuthStore();
@@ -18,7 +18,7 @@ const Dashboard = () => {
       const data = await getPrompts();
       setPrompts(data);
     } catch (error) {
-      console.error('Error fetching prompts:', error);
+      console.error("Error fetching prompts:", error);
     } finally {
       setLoading(false);
     }
@@ -48,7 +48,9 @@ const Dashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {prompts.length === 0 ? (
             <div className="col-span-full text-center py-12">
-              <p className="text-gray-400 text-lg mb-4">No prompts yet. Create your first prompt!</p>
+              <p className="text-gray-400 text-lg mb-4">
+                No prompts yet. Create your first prompt!
+              </p>
               <Link
                 to="/prompts/new"
                 className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-colors inline-block"
@@ -58,9 +60,16 @@ const Dashboard = () => {
             </div>
           ) : (
             prompts.map((prompt) => (
-              <div key={prompt._id} className="bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow hover-lift border border-gray-700">
-                <h3 className="text-xl font-semibold text-white mb-2">{prompt.title}</h3>
-                <p className="text-gray-400 mb-4 line-clamp-3">{prompt.promptText}</p>
+              <div
+                key={prompt._id}
+                className="bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow hover-lift border border-gray-700"
+              >
+                <h3 className="text-xl font-semibold text-white mb-2">
+                  {prompt.title}
+                </h3>
+                <p className="text-gray-400 mb-4 line-clamp-3">
+                  {prompt.promptText}
+                </p>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-500">
                     {new Date(prompt.createdAt).toLocaleDateString()}

@@ -1,17 +1,21 @@
-import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { getPrompt, updatePrompt, deletePrompt } from '../api/promptAPI';
-import { testPrompt, refinePrompt, evaluatePrompt } from '../api/aiAPI';
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { getPrompt, updatePrompt, deletePrompt } from "../api/promptAPI";
+import { testPrompt, refinePrompt, evaluatePrompt } from "../api/aiAPI";
 
 const PromptDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [prompt, setPrompt] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [aiResponse, setAiResponse] = useState('');
+  const [aiResponse, setAiResponse] = useState("");
   const [isTesting, setIsTesting] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const [editData, setEditData] = useState({ title: '', promptText: '', category: '' });
+  const [editData, setEditData] = useState({
+    title: "",
+    promptText: "",
+    category: "",
+  });
 
   useEffect(() => {
     fetchPrompt();
@@ -27,7 +31,7 @@ const PromptDetails = () => {
         category: data.category,
       });
     } catch (error) {
-      console.error('Error fetching prompt:', error);
+      console.error("Error fetching prompt:", error);
     } finally {
       setLoading(false);
     }
@@ -36,12 +40,15 @@ const PromptDetails = () => {
   const handleTestPrompt = async () => {
     setIsTesting(true);
     try {
-      const response = await testPrompt({ promptId: id, promptText: prompt.promptText });
+      const response = await testPrompt({
+        promptId: id,
+        promptText: prompt.promptText,
+      });
       setAiResponse(response.aiResponse);
       // Refresh prompt to get updated responses
       fetchPrompt();
     } catch (error) {
-      console.error('Error testing prompt:', error);
+      console.error("Error testing prompt:", error);
     } finally {
       setIsTesting(false);
     }
@@ -53,17 +60,17 @@ const PromptDetails = () => {
       setIsEditing(false);
       fetchPrompt();
     } catch (error) {
-      console.error('Error updating prompt:', error);
+      console.error("Error updating prompt:", error);
     }
   };
 
   const handleDeletePrompt = async () => {
-    if (window.confirm('Are you sure you want to delete this prompt?')) {
+    if (window.confirm("Are you sure you want to delete this prompt?")) {
       try {
         await deletePrompt(id);
-        navigate('/dashboard');
+        navigate("/dashboard");
       } catch (error) {
-        console.error('Error deleting prompt:', error);
+        console.error("Error deleting prompt:", error);
       }
     }
   };
@@ -89,7 +96,7 @@ const PromptDetails = () => {
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="mb-8">
           <button
-            onClick={() => navigate('/dashboard')}
+            onClick={() => navigate("/dashboard")}
             className="text-purple-400 hover:text-purple-300 mb-4 inline-block"
           >
             ← Back to Dashboard
@@ -99,11 +106,15 @@ const PromptDetails = () => {
               <input
                 type="text"
                 value={editData.title}
-                onChange={(e) => setEditData({ ...editData, title: e.target.value })}
+                onChange={(e) =>
+                  setEditData({ ...editData, title: e.target.value })
+                }
                 className="text-4xl font-bold bg-gray-800 border border-gray-600 rounded px-2 py-1 text-purple-400"
               />
             ) : (
-              <h1 className="text-4xl font-bold text-purple-400">{prompt.title}</h1>
+              <h1 className="text-4xl font-bold text-purple-400">
+                {prompt.title}
+              </h1>
             )}
             <div className="flex gap-2">
               {isEditing ? (
@@ -147,18 +158,22 @@ const PromptDetails = () => {
             {isEditing ? (
               <textarea
                 value={editData.promptText}
-                onChange={(e) => setEditData({ ...editData, promptText: e.target.value })}
+                onChange={(e) =>
+                  setEditData({ ...editData, promptText: e.target.value })
+                }
                 className="w-full h-64 bg-gray-700 border border-gray-600 rounded p-3 text-white"
               />
             ) : (
-              <p className="text-gray-300 whitespace-pre-wrap">{prompt.promptText}</p>
+              <p className="text-gray-300 whitespace-pre-wrap">
+                {prompt.promptText}
+              </p>
             )}
             <button
               onClick={handleTestPrompt}
               disabled={isTesting}
               className="mt-4 bg-purple-600 hover:bg-purple-700 disabled:bg-purple-800 text-white px-6 py-2 rounded font-medium"
             >
-              {isTesting ? 'Testing...' : 'Test with Gemini'}
+              {isTesting ? "Testing..." : "Test with Gemini"}
             </button>
           </div>
 
@@ -166,10 +181,14 @@ const PromptDetails = () => {
             <h2 className="text-2xl font-semibold mb-4">AI Response</h2>
             {aiResponse ? (
               <div className="bg-gray-700 rounded p-4">
-                <p className="text-gray-300 whitespace-pre-wrap">{aiResponse}</p>
+                <p className="text-gray-300 whitespace-pre-wrap">
+                  {aiResponse}
+                </p>
               </div>
             ) : (
-              <p className="text-gray-500">Click "Test with Gemini" to get an AI response</p>
+              <p className="text-gray-500">
+                Click "Test with Gemini" to get an AI response
+              </p>
             )}
           </div>
         </div>
@@ -180,7 +199,9 @@ const PromptDetails = () => {
             <div className="space-y-4">
               {prompt.aiResponses.map((response, index) => (
                 <div key={index} className="bg-gray-800 rounded-lg p-4">
-                  <p className="text-gray-300 whitespace-pre-wrap">{response.responseText}</p>
+                  <p className="text-gray-300 whitespace-pre-wrap">
+                    {response.responseText}
+                  </p>
                   <span className="text-sm text-gray-500">
                     {new Date(response.createdAt).toLocaleString()}
                   </span>

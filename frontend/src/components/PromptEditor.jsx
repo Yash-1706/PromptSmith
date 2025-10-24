@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { createPrompt } from '../api/promptAPI';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { createPrompt } from "../api/promptAPI";
 
 const PromptEditor = () => {
   const [formData, setFormData] = useState({
-    title: '',
-    promptText: '',
-    category: '',
+    title: "",
+    promptText: "",
+    category: "",
   });
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -23,9 +23,9 @@ const PromptEditor = () => {
     setIsLoading(true);
     try {
       await createPrompt(formData);
-      navigate('/dashboard');
+      navigate("/dashboard");
     } catch (error) {
-      console.error('Error creating prompt:', error);
+      console.error("Error creating prompt:", error);
     } finally {
       setIsLoading(false);
     }
@@ -35,14 +35,24 @@ const PromptEditor = () => {
     <div className="min-h-screen bg-gray-900 text-white">
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-purple-400 mb-4">Create New Prompt</h1>
-          <p className="text-gray-400">Craft your AI prompt and test it with Gemini</p>
+          <h1 className="text-4xl font-bold text-purple-400 mb-4">
+            Create New Prompt
+          </h1>
+          <p className="text-gray-400">
+            Craft your AI prompt and test it with Gemini
+          </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-gray-800 rounded-lg p-8 shadow-lg">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-gray-800 rounded-lg p-8 shadow-lg"
+        >
           <div className="space-y-6">
             <div>
-              <label htmlFor="title" className="block text-sm font-medium text-gray-300 mb-2">
+              <label
+                htmlFor="title"
+                className="block text-sm font-medium text-gray-300 mb-2"
+              >
                 Title
               </label>
               <input
@@ -58,7 +68,10 @@ const PromptEditor = () => {
             </div>
 
             <div>
-              <label htmlFor="category" className="block text-sm font-medium text-gray-300 mb-2">
+              <label
+                htmlFor="category"
+                className="block text-sm font-medium text-gray-300 mb-2"
+              >
                 Category (Optional)
               </label>
               <input
@@ -73,7 +86,10 @@ const PromptEditor = () => {
             </div>
 
             <div>
-              <label htmlFor="promptText" className="block text-sm font-medium text-gray-300 mb-2">
+              <label
+                htmlFor="promptText"
+                className="block text-sm font-medium text-gray-300 mb-2"
+              >
                 Prompt Text
               </label>
               <textarea
@@ -94,11 +110,11 @@ const PromptEditor = () => {
                 disabled={isLoading}
                 className="bg-purple-600 hover:bg-purple-700 disabled:bg-purple-800 text-white font-medium py-2 px-6 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500"
               >
-                {isLoading ? 'Creating...' : 'Create Prompt'}
+                {isLoading ? "Creating..." : "Create Prompt"}
               </button>
               <button
                 type="button"
-                onClick={() => navigate('/dashboard')}
+                onClick={() => navigate("/dashboard")}
                 className="bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 px-6 rounded-md transition-colors"
               >
                 Cancel
