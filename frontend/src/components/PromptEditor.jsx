@@ -45,25 +45,25 @@ const PromptEditor = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="max-w-4xl mx-auto px-4 py-8">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-accent mb-4">
+        <div className="mb-8 slide-in-left">
+          <h1 className="text-4xl font-bold gradient-text mb-4">
             Create New Prompt
           </h1>
-          <p className="text-muted-foreground">
-            Craft your AI prompt and test it with Gemini
+          <p className="text-muted-foreground text-lg">
+            Craft your AI prompt and test it with Gemini ✨
           </p>
         </div>
 
-        <Card>
+        <Card className="bounce-in shadow-xl border-2 border-accent/20">
           <CardHeader>
-            <CardTitle>Prompt Details</CardTitle>
+            <CardTitle className="text-primary">Prompt Details</CardTitle>
             <CardDescription>
-              Fill in the details for your new prompt.
+              Fill in the details for your new prompt. Let's make something amazing! 🚀
             </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
+              <div className="slide-in-right">
                 <Label htmlFor="title">Title</Label>
                 <Input
                   type="text"
@@ -73,10 +73,11 @@ const PromptEditor = () => {
                   onChange={handleChange}
                   required
                   placeholder="Enter prompt title"
+                  className="hover:border-primary/50 transition-colors focus:border-primary"
                 />
               </div>
 
-              <div>
+              <div className="slide-in-left">
                 <Label htmlFor="category">Category (Optional)</Label>
                 <Input
                   type="text"
@@ -85,10 +86,11 @@ const PromptEditor = () => {
                   value={formData.category}
                   onChange={handleChange}
                   placeholder="e.g., Creative Writing, Code Generation"
+                  className="hover:border-secondary/50 transition-colors focus:border-secondary"
                 />
               </div>
 
-              <div>
+              <div className="slide-in-right">
                 <Label htmlFor="promptText">Prompt Text</Label>
                 <Textarea
                   id="promptText"
@@ -98,17 +100,19 @@ const PromptEditor = () => {
                   required
                   rows={8}
                   placeholder="Write your AI prompt here..."
+                  className="hover:border-accent/50 transition-colors focus:border-accent"
                 />
               </div>
 
-              <div className="flex gap-4">
-                <Button type="submit" disabled={isLoading}>
+              <div className="flex gap-4 slide-in-left">
+                <Button type="submit" disabled={isLoading} className="rainbow-border hover:scale-105 transition-transform">
                   {isLoading ? "Creating..." : "Create Prompt"}
                 </Button>
                 <Button
                   type="button"
                   variant="outline"
                   onClick={() => navigate("/dashboard")}
+                  className="hover:bg-muted transition-colors"
                 >
                   Cancel
                 </Button>

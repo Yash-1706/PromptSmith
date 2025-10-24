@@ -40,21 +40,24 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-4">
-      <Card className="max-w-md w-full">
-        <CardHeader>
-          <CardTitle className="text-3xl font-bold text-center">
+      <Card className="max-w-md w-full bounce-in shadow-xl border-2 border-accent/20">
+        <CardHeader className="text-center">
+          <CardTitle className="text-3xl font-bold gradient-text mb-2">
             Login to PromptSmith
           </CardTitle>
+          <CardDescription className="text-muted-foreground">
+            Welcome back! Let's create some amazing prompts
+          </CardDescription>
         </CardHeader>
         <CardContent>
           {error && (
-            <div className="bg-destructive text-destructive-foreground p-3 rounded-md mb-4">
+            <div className="bg-destructive/10 text-destructive border border-destructive/20 p-3 rounded-md mb-4 animate-pulse">
               {error}
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
+            <div className="slide-in-left">
               <Label htmlFor="email">Email</Label>
               <Input
                 type="email"
@@ -64,10 +67,11 @@ const Login = () => {
                 onChange={handleChange}
                 required
                 placeholder="Enter your email"
+                className="hover:border-accent/50 transition-colors focus:border-accent"
               />
             </div>
 
-            <div>
+            <div className="slide-in-right">
               <Label htmlFor="password">Password</Label>
               <Input
                 type="password"
@@ -77,17 +81,21 @@ const Login = () => {
                 onChange={handleChange}
                 required
                 placeholder="Enter your password"
+                className="hover:border-accent/50 transition-colors focus:border-accent"
               />
             </div>
 
-            <Button type="submit" disabled={isLoading} className="w-full">
+            <Button type="submit" disabled={isLoading} className="w-full rainbow-border hover:scale-105 transition-transform">
               {isLoading ? "Logging in..." : "Login"}
             </Button>
           </form>
 
           <p className="text-center text-muted-foreground mt-6">
             Don't have an account?{" "}
-            <Link to="/register" className="text-accent hover:text-accent/80">
+            <Link
+              to="/register"
+              className="text-accent hover:text-accent/80 font-semibold hover:underline transition-all"
+            >
               Register here
             </Link>
           </p>

@@ -114,26 +114,28 @@ const PromptDetails = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="max-w-6xl mx-auto px-4 py-8">
-        <div className="mb-8">
+        <div className="mb-8 slide-in-left">
           <Button
             variant="link"
             onClick={() => navigate("/dashboard")}
-            className="mb-4"
+            className="mb-4 hover:text-accent transition-colors"
           >
             ← Back to Dashboard
           </Button>
           <div className="flex justify-between items-start">
-            <h1 className="text-4xl font-bold text-accent">{prompt.title}</h1>
+            <h1 className="text-4xl font-bold gradient-text">
+              {prompt.title}
+            </h1>
             <div className="flex gap-2">
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button>Edit</Button>
+                  <Button className="hover:scale-105 transition-transform">Edit</Button>
                 </DialogTrigger>
-                <DialogContent>
+                <DialogContent className="bounce-in">
                   <DialogHeader>
-                    <DialogTitle>Edit Prompt</DialogTitle>
+                    <DialogTitle className="gradient-text">Edit Prompt</DialogTitle>
                     <DialogDescription>
-                      Make changes to your prompt here.
+                      Make changes to your prompt here. Let's improve it! ✨
                     </DialogDescription>
                   </DialogHeader>
                   <div className="space-y-4">
@@ -173,11 +175,11 @@ const PromptDetails = () => {
                     </div>
                   </div>
                   <DialogFooter>
-                    <Button onClick={handleUpdatePrompt}>Save changes</Button>
+                    <Button onClick={handleUpdatePrompt} className="rainbow-border hover:scale-105 transition-transform">Save changes</Button>
                   </DialogFooter>
                 </DialogContent>
               </Dialog>
-              <Button variant="destructive" onClick={handleDeletePrompt}>
+              <Button variant="destructive" onClick={handleDeletePrompt} className="hover:scale-105 transition-transform">
                 Delete
               </Button>
             </div>
@@ -185,38 +187,38 @@ const PromptDetails = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <Card>
+          <Card className="slide-in-left shadow-xl border-2 border-primary/20">
             <CardHeader>
-              <CardTitle>Prompt</CardTitle>
+              <CardTitle className="text-primary">Prompt</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-foreground whitespace-pre-wrap">
+              <p className="text-muted-foreground whitespace-pre-wrap mb-4">
                 {prompt.promptText}
               </p>
               <Button
                 onClick={handleTestPrompt}
                 disabled={isTesting}
-                className="mt-4"
+                className="rainbow-border hover:scale-105 transition-transform"
               >
                 {isTesting ? "Testing..." : "Test with Gemini"}
               </Button>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="slide-in-right shadow-xl border-2 border-secondary/20">
             <CardHeader>
-              <CardTitle>AI Response</CardTitle>
+              <CardTitle className="text-secondary">AI Response</CardTitle>
             </CardHeader>
             <CardContent>
               {aiResponse ? (
-                <div className="bg-card rounded p-4">
+                <div className="bg-accent/10 rounded p-4 border border-accent/20">
                   <p className="text-foreground whitespace-pre-wrap">
                     {aiResponse}
                   </p>
                 </div>
               ) : (
                 <p className="text-muted-foreground">
-                  Click "Test with Gemini" to get an AI response
+                  Click "Test with Gemini" to get an AI response ✨
                 </p>
               )}
             </CardContent>
@@ -224,13 +226,13 @@ const PromptDetails = () => {
         </div>
 
         {prompt.aiResponses && prompt.aiResponses.length > 0 && (
-          <div className="mt-8">
-            <h2 className="text-2xl font-semibold mb-4">Response History</h2>
+          <div className="mt-8 slide-in-left">
+            <h2 className="text-2xl font-semibold mb-4 gradient-text">Response History</h2>
             <div className="space-y-4">
               {prompt.aiResponses.map((response, index) => (
-                <Card key={index}>
+                <Card key={index} className="hover-lift" style={{ animationDelay: `${index * 0.1}s` }}>
                   <CardContent className="pt-6">
-                    <p className="text-foreground whitespace-pre-wrap">
+                    <p className="text-muted-foreground whitespace-pre-wrap">
                       {response.responseText}
                     </p>
                     <span className="text-sm text-muted-foreground">
