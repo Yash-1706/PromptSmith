@@ -10,8 +10,7 @@ const generateResponse = async (prompt) => {
     return response.text();
   } catch (error) {
     console.error('Gemini API error:', error);
-    // Fallback mock response for demo purposes
-    return `Mock AI Response: This is a simulated response to your prompt: "${prompt}". Please provide a valid Gemini API key from Google AI Studio to get real AI responses.`;
+    throw new Error('Failed to generate AI response: ' + error.message);
   }
 };
 
