@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import useAuthStore from "../store/useAuthStore";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const { user, logout } = useAuthStore();
@@ -24,33 +25,21 @@ const Navbar = () => {
           {user ? (
             <>
               <span className="text-gray-300">Welcome, {user.username}</span>
-              <Link
-                to="/dashboard"
-                className="text-gray-300 hover:text-white px-3 py-2 rounded-md transition-colors"
-              >
-                Dashboard
-              </Link>
-              <button
-                onClick={handleLogout}
-                className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md transition-colors"
-              >
+              <Button asChild variant="ghost">
+                <Link to="/dashboard">Dashboard</Link>
+              </Button>
+              <Button onClick={handleLogout} variant="destructive">
                 Logout
-              </button>
+              </Button>
             </>
           ) : (
             <>
-              <Link
-                to="/login"
-                className="text-gray-300 hover:text-white px-3 py-2 rounded-md transition-colors"
-              >
-                Login
-              </Link>
-              <Link
-                to="/register"
-                className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md transition-colors"
-              >
-                Register
-              </Link>
+              <Button asChild variant="ghost">
+                <Link to="/login">Login</Link>
+              </Button>
+              <Button asChild>
+                <Link to="/register">Register</Link>
+              </Button>
             </>
           )}
         </div>

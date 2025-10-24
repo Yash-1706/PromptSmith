@@ -1,22 +1,27 @@
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const PromptCard = ({ prompt }) => {
   return (
-    <div className="bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow border border-gray-700">
-      <h3 className="text-xl font-semibold text-white mb-2">{prompt.title}</h3>
-      <p className="text-gray-400 mb-4 line-clamp-3">{prompt.promptText}</p>
-      <div className="flex justify-between items-center">
-        <span className="text-sm text-gray-500">
-          {new Date(prompt.createdAt).toLocaleDateString()}
-        </span>
-        <Link
-          to={`/prompts/${prompt._id}`}
-          className="text-purple-400 hover:text-purple-300 font-medium"
-        >
-          View Details →
-        </Link>
-      </div>
-    </div>
+    <Card className="hover:shadow-xl transition-shadow">
+      <CardHeader>
+        <CardTitle>{prompt.title}</CardTitle>
+        <CardDescription className="line-clamp-3">
+          {prompt.promptText}
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className="flex justify-between items-center">
+          <span className="text-sm text-gray-500">
+            {new Date(prompt.createdAt).toLocaleDateString()}
+          </span>
+          <Button variant="link" asChild>
+            <Link to={`/prompts/${prompt._id}`}>View Details →</Link>
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
   );
 };
 
