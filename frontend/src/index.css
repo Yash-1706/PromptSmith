@@ -7,43 +7,204 @@
   font-weight: 400;
   --radius: 0.625rem;
   --background: #FFFFFF;
-  --foreground: #1A1A1A;
-  --card: #F8F9FA;
-  --card-foreground: #1A1A1A;
-  --popover: #F8F9FA;
-  --popover-foreground: #1A1A1A;
-  --primary: #2563EB;
+  --foreground: #1F2937;
+  --card: #F9FAFB;
+  --card-foreground: #1F2937;
+  --popover: #F9FAFB;
+  --popover-foreground: #1F2937;
+  --primary: #64748B;
   --primary-foreground: #FFFFFF;
-  --secondary: #7C3AED;
+  --secondary: #94A3B8;
   --secondary-foreground: #FFFFFF;
-  --muted: #E9ECEF;
-  --muted-foreground: #6C757D;
-  --accent: #F59E0B;
+  --muted: #F3F4F6;
+  --muted-foreground: #6B7280;
+  --accent: #6B7280;
   --accent-foreground: #FFFFFF;
   --destructive: #EF4444;
-  --border: #DEE2E6;
-  --input: #F8F9FA;
-  --ring: #2563EB;
-  --chart-1: #2563EB;
-  --chart-2: #7C3AED;
-  --chart-3: #F59E0B;
+  --border: #E5E7EB;
+  --input: #F9FAFB;
+  --ring: #64748B;
+  --chart-1: #64748B;
+  --chart-2: #94A3B8;
+  --chart-3: #6B7280;
   --chart-4: #10B981;
-  --chart-5: #EC4899;
-  --sidebar: #F8F9FA;
-  --sidebar-foreground: #1A1A1A;
-  --sidebar-primary: #2563EB;
+  --chart-5: #F59E0B;
+  --sidebar: #F9FAFB;
+  --sidebar-foreground: #1F2937;
+  --sidebar-primary: #64748B;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #F59E0B;
+  --sidebar-accent: #6B7280;
   --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: #DEE2E6;
-  --sidebar-ring: #2563EB;
+  --sidebar-border: #E5E7EB;
+  --sidebar-ring: #64748B;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
   background: #FFFFFF;
-  color: #1A1A1A;
+  color: #1F2937;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F9FAFB;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #64748B;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4B5563;
+}
+
+/* Subtle animated background */
+.animated-bg {
+  background: linear-gradient(-45deg, #F9FAFB, #F3F4F6, #E5E7EB, #FFFFFF);
+  background-size: 400% 400%;
+  animation: gradientShift 40s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Subtle gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #64748B, #94A3B8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: textGlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+  from { filter: brightness(1); }
+  to { filter: brightness(1.05); }
+}
+
+/* Gentle hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(100, 116, 139, 0.1);
+}
+
+/* Subtle button animations */
+.btn-pulse {
+  animation: pulse 4s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.98; }
+}
+
+/* Gentle bounce animation */
+.bounce-in {
+  animation: bounceIn 1s ease-out;
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.98); opacity: 0; }
+  50% { transform: scale(1.01); }
+  70% { transform: scale(0.99); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Subtle float animation */
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-2px); }
+}
+
+/* Gentle slide in animations */
+.slide-in-left {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-10px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.slide-in-right {
+  animation: slideInRight 0.8s ease-out;
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(10px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Subtle border */
+.rainbow-border {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+}
+
+.rainbow-border:hover {
+  border-color: var(--primary);
+}
+
+.rainbow-border > * {
+  background: white;
+  border-radius: 7px;
+}
+
+/* Very subtle glow */
+.glow-accent {
+  box-shadow: 0 0 8px rgba(100, 116, 139, 0.1);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
 }
 
 /* Custom scrollbar */
@@ -61,14 +222,14 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #1D4ED8;
+  background: #4B5563;
 }
 
 /* Animated background */
 .animated-bg {
-  background: linear-gradient(-45deg, #2563EB, #7C3AED, #F59E0B, #10B981);
+  background: linear-gradient(-45deg, #64748B, #94A3B8, #6B7280, #10B981);
   background-size: 400% 400%;
-  animation: gradientShift 20s ease infinite;
+  animation: gradientShift 30s ease infinite;
 }
 
 @keyframes gradientShift {
@@ -79,11 +240,11 @@ body {
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #2563EB, #7C3AED, #F59E0B);
+  background: linear-gradient(135deg, #64748B, #94A3B8, #6B7280);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: textGlow 4s ease-in-out infinite alternate;
+  animation: textGlow 6s ease-in-out infinite alternate;
 }
 
 @keyframes textGlow {
