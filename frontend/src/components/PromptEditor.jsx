@@ -58,7 +58,8 @@ const PromptEditor = () => {
           <CardHeader>
             <CardTitle className="text-primary">Prompt Details</CardTitle>
             <CardDescription>
-              Fill in the details for your new prompt. Let's make something amazing! 🚀
+              Fill in the details for your new prompt. Let's make something
+              amazing! 🚀
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -86,7 +87,7 @@ const PromptEditor = () => {
                   value={formData.category}
                   onChange={handleChange}
                   placeholder="e.g., Creative Writing, Code Generation"
-                  className="hover:border-secondary/50 transition-colors focus:border-secondary"
+                  className="hover:border-secondary/30 transition-colors focus:border-secondary"
                 />
               </div>
 
@@ -100,12 +101,16 @@ const PromptEditor = () => {
                   required
                   rows={8}
                   placeholder="Write your AI prompt here..."
-                  className="hover:border-accent/50 transition-colors focus:border-accent"
+                  className="hover:border-accent/30 transition-colors focus:border-accent"
                 />
               </div>
 
               <div className="flex gap-4 slide-in-left">
-                <Button type="submit" disabled={isLoading} className="rainbow-border hover:scale-105 transition-transform">
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  className="rainbow-border transition-transform hover:scale-102"
+                >
                   {isLoading ? "Creating..." : "Create Prompt"}
                 </Button>
                 <Button

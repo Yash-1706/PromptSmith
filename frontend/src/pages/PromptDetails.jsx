@@ -123,17 +123,19 @@ const PromptDetails = () => {
             ← Back to Dashboard
           </Button>
           <div className="flex justify-between items-start">
-            <h1 className="text-4xl font-bold gradient-text">
-              {prompt.title}
-            </h1>
+            <h1 className="text-4xl font-bold gradient-text">{prompt.title}</h1>
             <div className="flex gap-2">
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button className="hover:scale-105 transition-transform">Edit</Button>
+                  <Button className="transition-transform hover:scale-102">
+                    Edit
+                  </Button>
                 </DialogTrigger>
                 <DialogContent className="bounce-in">
                   <DialogHeader>
-                    <DialogTitle className="gradient-text">Edit Prompt</DialogTitle>
+                    <DialogTitle className="gradient-text">
+                      Edit Prompt
+                    </DialogTitle>
                     <DialogDescription>
                       Make changes to your prompt here. Let's improve it! ✨
                     </DialogDescription>
@@ -175,11 +177,20 @@ const PromptDetails = () => {
                     </div>
                   </div>
                   <DialogFooter>
-                    <Button onClick={handleUpdatePrompt} className="rainbow-border hover:scale-105 transition-transform">Save changes</Button>
+                    <Button
+                      onClick={handleUpdatePrompt}
+                      className="rainbow-border transition-transform hover:scale-102"
+                    >
+                      Save changes
+                    </Button>
                   </DialogFooter>
                 </DialogContent>
               </Dialog>
-              <Button variant="destructive" onClick={handleDeletePrompt} className="hover:scale-105 transition-transform">
+              <Button
+                variant="destructive"
+                onClick={handleDeletePrompt}
+                className="transition-transform hover:scale-102"
+              >
                 Delete
               </Button>
             </div>
@@ -227,10 +238,16 @@ const PromptDetails = () => {
 
         {prompt.aiResponses && prompt.aiResponses.length > 0 && (
           <div className="mt-8 slide-in-left">
-            <h2 className="text-2xl font-semibold mb-4 gradient-text">Response History</h2>
+            <h2 className="text-2xl font-semibold mb-4 gradient-text">
+              Response History
+            </h2>
             <div className="space-y-4">
               {prompt.aiResponses.map((response, index) => (
-                <Card key={index} className="hover-lift" style={{ animationDelay: `${index * 0.1}s` }}>
+                <Card
+                  key={index}
+                  className="hover-lift"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
                   <CardContent className="pt-6">
                     <p className="text-muted-foreground whitespace-pre-wrap">
                       {response.responseText}

@@ -45,7 +45,10 @@ const Dashboard = () => {
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-8 slide-in-left">
           <h1 className="text-4xl font-bold gradient-text">Dashboard</h1>
-          <Button asChild className="rainbow-border hover:scale-105 transition-transform">
+          <Button
+            asChild
+            className="rainbow-border transition-transform hover:scale-102"
+          >
             <Link to="/prompts/new">Create New Prompt</Link>
           </Button>
         </div>
@@ -78,7 +81,11 @@ const Dashboard = () => {
                     <span className="text-sm text-muted-foreground">
                       {new Date(prompt.createdAt).toLocaleDateString()}
                     </span>
-                    <Button variant="link" asChild className="hover:text-accent transition-colors">
+                    <Button
+                      variant="link"
+                      asChild
+                      className="hover:text-accent transition-colors"
+                    >
                       <Link to={`/prompts/${prompt._id}`}>View Details →</Link>
                     </Button>
                   </div>

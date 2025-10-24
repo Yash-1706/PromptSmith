@@ -40,7 +40,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-4">
-      <Card className="max-w-md w-full bounce-in shadow-xl border-2 border-accent/20">
+      <Card className="max-w-md w-full bounce-in shadow-lg border-2 border-accent/10">
         <CardHeader className="text-center">
           <CardTitle className="text-3xl font-bold gradient-text mb-2">
             Login to PromptSmith
@@ -67,7 +67,7 @@ const Login = () => {
                 onChange={handleChange}
                 required
                 placeholder="Enter your email"
-                className="hover:border-accent/50 transition-colors focus:border-accent"
+                className="hover:border-accent/30 transition-colors focus:border-accent"
               />
             </div>
 
@@ -81,11 +81,15 @@ const Login = () => {
                 onChange={handleChange}
                 required
                 placeholder="Enter your password"
-                className="hover:border-accent/50 transition-colors focus:border-accent"
+                className="hover:border-accent/30 transition-colors focus:border-accent"
               />
             </div>
 
-            <Button type="submit" disabled={isLoading} className="w-full rainbow-border hover:scale-105 transition-transform">
+            <Button
+              type="submit"
+              disabled={isLoading}
+              className="w-full rainbow-border transition-transform hover:scale-102"
+            >
               {isLoading ? "Logging in..." : "Login"}
             </Button>
           </form>
