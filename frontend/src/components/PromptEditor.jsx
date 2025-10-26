@@ -43,29 +43,49 @@ const PromptEditor = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <div className="mb-8 slide-in-left">
-          <h1 className="text-4xl font-bold gradient-text mb-4">
-            Create New Prompt
-          </h1>
-          <p className="text-muted-foreground text-lg">
-            Craft your AI prompt and test it with Gemini ✨
-          </p>
+    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
+      {/* Liquid glass background layers */}
+      <div className="absolute inset-0 bg-linear-to-br from-background via-slate-900/50 to-black"></div>
+
+      {/* Liquid shimmer overlay */}
+      <div className="absolute inset-0 bg-linear-to-tr from-transparent via-white/5 to-transparent animate-pulse"></div>
+
+      <div className="max-w-4xl mx-auto px-4 py-8 relative z-10">
+        <div className="mb-12 slide-in-left">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="w-12 h-12 bg-linear-to-r from-primary to-secondary rounded-full flex items-center justify-center">
+              <span className="text-xl">✨</span>
+            </div>
+            <div>
+              <h1 className="text-5xl font-bold gradient-text mb-2">
+                Create New Prompt
+              </h1>
+              <p className="text-muted-foreground text-xl">
+                Craft your AI prompt and test it with Gemini ✨
+              </p>
+            </div>
+          </div>
         </div>
 
-        <Card className="bounce-in shadow-xl border-2 border-accent/20">
-          <CardHeader>
-            <CardTitle className="text-primary">Prompt Details</CardTitle>
-            <CardDescription>
+        <Card className="bounce-in shadow-2xl border-border/50 glass">
+          <CardHeader className="pb-6">
+            <CardTitle className="text-primary text-2xl">
+              Prompt Details
+            </CardTitle>
+            <CardDescription className="text-muted-foreground text-lg">
               Fill in the details for your new prompt. Let's make something
               amazing! 🚀
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="slide-in-right">
-                <Label htmlFor="title">Title</Label>
+            <form onSubmit={handleSubmit} className="space-y-8">
+              <div className="slide-in-right space-y-3">
+                <Label
+                  htmlFor="title"
+                  className="text-sm font-semibold text-foreground"
+                >
+                  Title
+                </Label>
                 <Input
                   type="text"
                   id="title"
@@ -74,12 +94,17 @@ const PromptEditor = () => {
                   onChange={handleChange}
                   required
                   placeholder="Enter prompt title"
-                  className="hover:border-primary/50 transition-colors focus:border-primary"
+                  className="transition-all duration-300 text-lg"
                 />
               </div>
 
-              <div className="slide-in-left">
-                <Label htmlFor="category">Category (Optional)</Label>
+              <div className="slide-in-left space-y-3">
+                <Label
+                  htmlFor="category"
+                  className="text-sm font-semibold text-foreground"
+                >
+                  Category (Optional)
+                </Label>
                 <Input
                   type="text"
                   id="category"
@@ -87,29 +112,34 @@ const PromptEditor = () => {
                   value={formData.category}
                   onChange={handleChange}
                   placeholder="e.g., Creative Writing, Code Generation"
-                  className="hover:border-secondary/30 transition-colors focus:border-secondary"
+                  className="transition-all duration-300 text-lg"
                 />
               </div>
 
-              <div className="slide-in-right">
-                <Label htmlFor="promptText">Prompt Text</Label>
+              <div className="slide-in-right space-y-3">
+                <Label
+                  htmlFor="promptText"
+                  className="text-sm font-semibold text-foreground"
+                >
+                  Prompt Text
+                </Label>
                 <Textarea
                   id="promptText"
                   name="promptText"
                   value={formData.promptText}
                   onChange={handleChange}
                   required
-                  rows={8}
+                  rows={10}
                   placeholder="Write your AI prompt here..."
-                  className="hover:border-accent/30 transition-colors focus:border-accent"
+                  className="transition-all duration-300 text-lg leading-relaxed"
                 />
               </div>
 
-              <div className="flex gap-4 slide-in-left">
+              <div className="flex justify-center gap-6 slide-in-left pt-4">
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="rainbow-border transition-transform hover:scale-102"
+                  className="rainbow-border transition-all duration-300 text-lg px-8 py-3 max-w-xs"
                 >
                   {isLoading ? "Creating..." : "Create Prompt"}
                 </Button>
@@ -117,7 +147,7 @@ const PromptEditor = () => {
                   type="button"
                   variant="outline"
                   onClick={() => navigate("/dashboard")}
-                  className="hover:bg-muted transition-colors"
+                  className="hover:bg-muted/50 transition-all duration-300 text-lg px-8 py-3 max-w-xs"
                 >
                   Cancel
                 </Button>
